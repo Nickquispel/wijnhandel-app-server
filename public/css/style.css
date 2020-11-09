@@ -1,0 +1,42 @@
+.div1 {
+    width: 50%;
+    height: 40%;
+    border: 1px solid black;
+    padding: 5%;
+    position: fixed;
+    top: 30%;
+    left: 30%;
+    margin-top: -50px;
+    margin-left: -50px;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 25px;
+    box-shadow: 10px 10px;
+    background-color: 	rgb(211,211,211);
+}
+
+.user {
+    position: fixed;
+    font-family: Courgette;
+    top: 10%;
+    left: 35%;
+    font-size: 60px;
+    color: rgb(25, 182, 11);
+    height: 20%;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+h1 {
+    position: relative;
+    font-size: 45px;
+    padding:5%;
+    font-family: Courgette;
+}
+
+body {
+    background-image: url("../images/wine-background.jpg");
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: 95%;
+    background-color: black;
+}

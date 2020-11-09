@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    	<link href='https://fonts.googleapis.com/css?family=Courgette' rel='stylesheet'>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="/css/style.css">
+
+        <style>
+        .user{
+            
+        }
+        .title{
+            font-family: Courgette;
+            font-size:32px;
+        }
+        
+        tr:hover {background-color: #f5f5f5;}
+
+        table, th, td {
+  border: 1px solid black;
+  text-align: center;
+  padding: 5px;
+  
+}
+        </style>
+	</head>
+	<body>
+    <h1 class="title"> Wijnhandel van Vianen</h1>
+    
+    {% if isCustomerEmail %}
+      <div class="user"> Geachte {{ order.name }}, </div>
+      <br />
+      <p class="intro"> Bedankt voor je bestelling. Wij gaan je order verwerken.</p>
+    {% else %}
+      <div class="user"> Geachte Glenn,</div>
+      <br />
+      <p class="intro"> U heeft zojuist een nieuwe order ontvangen.</p>
+
+      <table>
+      <tr>
+      <th>Naam</th>
+      <th>Email</th>
+      <th>Telefoonnummer</th>
+      <th>Adres</th>
+      <th>Postcode</th>
+      <th>Stad</th>
+      </tr>
+      <tr>
+      <th>{{ order.name }}</th>
+      <th>{{ order.email }}</th>
+      <th>{{ order.phonenumber}}</th>
+      <th>{{ order.address}}</th>
+      <th>{{ order.zipcode}}</th>
+      <th>{{ order.city}}</th>
+      </tr>
+      </table>
+      <br />
+    {% endif %}
+    
+        
+    <div class="orderlist"> De volgende artikelen staan op de bestelling: </div>
+
+    <table>
+      <tr>
+        <th>Artikel</th>
+        <th>Hoeveelheid</th>
+        <th>Prijs</th>
+        <th>Totaal prijs</th>
+      </tr>
+
+      {% for orderline in orderlines%}
+        <tr>
+          <td>{{ orderline.productname }}</td>
+          <td>{{ orderline.qty }}</td>
+          <td>€{{ orderline.priceEach    }}</td>
+          <td>€{{ orderline.totalPrice    }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+    <br />
+    <div class="total"> De totale prijs voor de bestelling is €{{ totalOrderPrice }} </div>
+    <div class="pickupdate"> De gewenste afhaaldatum is {{ order.pickupdate|date("d-m-Y") }}, {% if isCustomerEmail %} Wij nemen contact met u op of dit haalbaar is. </div> {% endif %}
+    <br />
+    <br />
+    <div class="greeting"> Met vriendelijke groet, </div>
+    <br />
+    <div class="closing"> Wijnhandel van Vianen </div>
+    <div> Industrieweg 112 </div>
+    <div>2651 BD Berkel en Rodenrijs</div>
+    <div>Tel. 010-5114520</div>
+  </body>
+</html>
